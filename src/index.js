@@ -47,10 +47,7 @@ on(drawingBoard, 'mouseup mouseleave touchend touchleave', stopDraw);
 on(menuButton, 'click', () => menu.classList.toggle('active'));
 on(clearButton, 'click', clear);
 on(saveButton, 'click', save);
-on(eraseButton, 'click', () => {
-  currentBrush = eraser;
-  updateButton();
-})
+on(eraseButton, 'click', () => setBrush(eraser));
 
 function updateButton() {
   menuButton.innerHTML = currentBrush.getImage(Brush.size, Brush.color);
@@ -70,7 +67,6 @@ function startDraw(e) {
   const coords = getCoordsfromEvent(e);
   currentBrush.startDraw(coords);
   menu.classList.remove('active')
-  e.preventDefault();
 }
 
 function stopDraw(e) {
@@ -88,10 +84,7 @@ colors.forEach(color => {
   const colorPicker = document.createElement('div');
   colorPicker.className = 'colorpicker';
   colorPicker.style.backgroundColor = color;
-  on(colorPicker, 'click', () => {
-    Brush.setColor(color);
-    updateButton();
-  });
+  on(colorPicker, 'click', () => setColor(color));
   document.querySelector('#colorcontainer').appendChild(colorPicker);
 })
 
@@ -99,10 +92,7 @@ brushes.forEach(brush => {
   const brushPicker = document.createElement('div');
   brushPicker.className = 'brushpicker';
   brushPicker.innerHTML = brush.getImage();
-  on(brushPicker, 'click', () => {
-    currentBrush = brush;
-    updateButton();
-  })
+  on(brushPicker, 'click', () => setBrush(brush));
   document.querySelector('#brushcontainer').appendChild(brushPicker);
 });
 
@@ -110,12 +100,24 @@ sizes.forEach(size => {
   const sizePicker = document.createElement('div');
   sizePicker.className = 'sizepicker';
   sizePicker.style.width = sizePicker.style.height = `${size}px`;
-  on(sizePicker, 'click', () => {
-    Brush.setSize(size);
-    updateButton();
-  });
+  on(sizePicker, 'click', () => setSize(size));
   document.querySelector('#sizecontainer').appendChild(sizePicker);
 })
+
+function setBrush(brush) {
+  currentBrush = brush;
+  updateButton();
+}
+
+function setSize(size) {
+  Brush.setSize(size);
+  updateButton();
+}
+
+function setColor(color) {
+  Brush.setColor(color);
+  updateButton();
+}
 
 updateButton();
 clear();
