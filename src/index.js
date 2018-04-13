@@ -67,7 +67,8 @@ function save() {
 function startDraw(e) {
   const coords = getCoordsfromEvent(e);
   currentBrush.startDraw(coords);
-  menu.classList.remove('active')
+  menu.classList.remove('active');
+  e.preventDefault();
 }
 
 function stopDraw(e) {
