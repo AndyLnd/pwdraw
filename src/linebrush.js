@@ -2,6 +2,9 @@ import Brush from './brush.js';
 
 class LineBrush extends Brush {
   doDraw(oldX, oldY, newX, newY) {
+    if (oldX === newX && oldY === newY) {
+      newX += .1;
+    }
     this.ctx.strokeStyle = Brush.color;
     this.ctx.lineWidth = Brush.size;
     this.ctx.lineCap = 'round';
