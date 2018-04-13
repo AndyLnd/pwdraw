@@ -1,12 +1,13 @@
 import Brush from './brush';
+import { rand } from './util';
 
 class SplatBrush extends Brush {
   doDraw(oldX, oldY, newX, newY) {
     this.ctx.fillStyle = Brush.color;
     for (let i = 0; i < 16; i++) {
-      const angle = Math.random() * Math.PI * 2;
-      const dist = Math.random() * Brush.size;
-      const rad = Math.random() * Brush.size / (2 + dist / 4);
+      const angle = rand(Math.PI * 2);
+      const dist = rand(Brush.size);
+      const rad = rand(Brush.size / (2 + dist / 4));
       const x = newX + Math.cos(angle) * dist;
       const y = newY + Math.sin(angle) * dist;
       this.ctx.beginPath();

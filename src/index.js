@@ -34,9 +34,9 @@ const colors = [
 
 const sizes = [40, 20, 10];
 
-let currentBrush = brushes[0];
-Brush.setColor(colors[0]);
-Brush.setSize(sizes[1]);
+let currentBrush = brushes[1];
+Brush.setColor(colors[1]);
+Brush.setSize(sizes[0]);
 
 drawingBoard.width = window.innerWidth;
 drawingBoard.height = window.innerHeight;
@@ -50,7 +50,8 @@ on(saveButton, 'click', save);
 on(eraseButton, 'click', () => setBrush(eraser));
 
 function updateButton() {
-  menuButton.innerHTML = currentBrush.getImage(Brush.size, Brush.color);
+  const size = Math.min(32, Math.max(8, Brush.size));
+  menuButton.innerHTML = currentBrush.getImage(size, Brush.color);
 }
 
 function clear() {

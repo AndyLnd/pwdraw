@@ -22,3 +22,5 @@ export const getTime = () => {
     d.getSeconds()
   ].join('-');
 }
+
+export const rand = (min = 1, max) => isNaN(max) ? Math.random() * min : Math.random() * (max - min) + min;
