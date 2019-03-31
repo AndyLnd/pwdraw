@@ -16,7 +16,7 @@ class SplatBrush extends Brush {
     }
   }
 
-  getImage(size = 32, color = "#000") {
+  getImage(size = 32, color = "#301") {
     return `
       <svg width="${size}" height="${size}" viewBox="0 0 32 32">
         <path fill="${color}" d="M8.3 14A4 4 0 1 1 12 7.3V7a7 7 0 1 1 13.1 3.4A5 5 0 0 1 32 15a5 5 0 0 1-8.4 3.6 8 8 0 0 1-11.9 4.2A6 6 0 1 1 8 15.4l.3-1.5zM22 32a4 4 0 1 1 0-8 4 4 0 0 1 0 8z"/>

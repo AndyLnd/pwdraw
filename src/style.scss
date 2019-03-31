@@ -1,3 +1,5 @@
+$black: #301;
+
 body {
   margin: 0;
   font-size: 0;
@@ -31,9 +33,10 @@ body {
   height: 32px;
   border-radius: 50%;
   box-sizing: border-box;
-  margin: 5px;
+  margin: 2px ;
   cursor: pointer;
   position: relative;
+  border: 2px solid $black;
 }
 
 .brushpicker {
@@ -42,7 +45,7 @@ body {
 
 .sizepicker{
   border-radius: 50%;
-  background-color: #000;
+  background-color: $black;
   margin: 5px;
 }
 
@@ -67,7 +70,7 @@ body {
   width: 48px;
   height: 48px;
   border-radius: 50%;
-  background-color: #000;
+  background-color: $black;
   border: 1px solid;
   display: flex;
   justify-content: center;

@@ -14,7 +14,7 @@ class LineBrush extends Brush {
     this.ctx.stroke();
   }
 
-  getImage(size = 32, color = "#000") {
+  getImage(size = 32, color = "#301") {
     return `
       <svg width="${size}" height="${size}" viewBox="0 0 32 32">
         <circle fill="${color}" cx="16" cy="16" r="16"/>
