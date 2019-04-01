@@ -47,6 +47,8 @@ export class BrushManager {
       const sizeItem = createItem('sizepicker', sizeContainer, () => this.setSize(size));
       sizeItem.style.width = sizeItem.style.height = `${size}px`;
     });
+
+    this.updateButton();
   }
 
   setBackground(fill) {
