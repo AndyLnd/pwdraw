@@ -2,7 +2,7 @@
 import './style.scss';
 import { on, getCoordsfromEvent, getTime } from './util';
 import { createTexture } from './paperTexture';
-import { load, store } from './storage';
+import { load, store, loadJson, storeJson } from './storage';
 import Brush from './brush';
 import LineBrush from './linebrush';
 import SplatBrush from './splatbrush';
@@ -33,9 +33,9 @@ const colors = [
 
 const sizes = [40, 20, 10];
 
-let currentBrush = brushes[load('brushNumber')] || eraser;
-Brush.setColor(load('brushColor') || colors[1]);
-Brush.setSize(load('brushSize') || sizes[0]);
+let currentBrush = brushes[loadJson('brushNumber')] || eraser;
+Brush.setColor(loadJson('brushColor') || colors[1]);
+Brush.setSize(loadJson('brushSize') || sizes[0]);
 
 drawingBoard.width = window.innerWidth;
 drawingBoard.height = window.innerHeight;
@@ -110,19 +110,19 @@ sizes.forEach(size => {
 
 function setBrush(brush) {
   currentBrush = brush;
-  store('brushNumber', brushes.indexOf(brush));
+  storeJson('brushNumber', brushes.indexOf(brush));
   updateButton();
 }
 
 function setSize(size) {
   Brush.setSize(size);
-  store('brushSize', size);
+  storeJson('brushSize', size);
   updateButton();
 }
 
 function setColor(color) {
   Brush.setColor(color);
-  store('brushColor', color);
+  storeJson('brushColor', color);
   updateButton();
 }
 
