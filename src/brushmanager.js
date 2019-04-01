@@ -11,24 +11,14 @@ function createItem(className, container, onClick) {
 }
 
 export class BrushManager {
-  constructor({
-    colors,
-    brushes,
-    sizes,
-    context,
-    eraser,
-    colorContainer,
-    brushContainer,
-    sizeContainer,
-    menuButton,
-  }) {
+  constructor({ colors, brushes, sizes, context, eraser, colorContainer, brushContainer, sizeContainer, menuButton }) {
     this.brushes = brushes.map(brushClass => new brushClass(context));
     this.eraser = new eraser(context);
     this.menuButton = menuButton;
 
-    this.currentBrush = this.brushes[loadJson('brushNumber')] || this.eraser;
+    this.currentBrush = this.brushes[loadJson('brushNumber') || 0] || this.eraser;
     Brush.setColor(loadJson('brushColor') || colors[1]);
-    Brush.setSize(loadJson('brushSize') || sizes[0]);
+    Brush.setSize(loadJson('brushSize') || sizes[1]);
 
     const eraserItem = createItem('brushpicker eraser', brushContainer, () => this.setBrush(this.eraser));
     eraserItem.innerHTML = this.eraser.getImage();

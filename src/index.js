@@ -2,8 +2,7 @@
 import './style.scss';
 import { on, getCoordsfromEvent, getTime } from './util';
 import { createTexture } from './paperTexture';
-import { load, store, loadJson, storeJson } from './storage';
-import Brush from './brush';
+import { load, store } from './storage';
 import LineBrush from './linebrush';
 import SplatBrush from './splatbrush';
 import DripBrush from './dripbrush';
@@ -15,6 +14,11 @@ const menu = document.querySelector('#menu');
 const menuButton = document.querySelector('#menubutton');
 const clearButton = document.querySelector('#clear');
 const saveButton = document.querySelector('#save');
+
+const isIos = /iP(hone|ad|od)/.test(navigator.userAgent);
+if (isIos) {
+  saveButton.style.display = 'none';
+}
 
 const drawingContext = drawingBoard.getContext('2d');
 
