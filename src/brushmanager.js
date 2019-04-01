@@ -16,14 +16,14 @@ export class BrushManager {
     brushes,
     sizes,
     context,
-    eraserClass,
+    eraser,
     colorContainer,
     brushContainer,
     sizeContainer,
     menuButton,
   }) {
     this.brushes = brushes.map(brushClass => new brushClass(context));
-    this.eraser = new eraserClass(context);
+    this.eraser = new eraser(context);
     this.menuButton = menuButton;
 
     this.currentBrush = this.brushes[loadJson('brushNumber')] || this.eraser;
@@ -51,9 +51,7 @@ export class BrushManager {
     this.updateButton();
   }
 
-  setBackground(fill) {
-    this.eraser.setFill(fill);
-  }
+  setBackground = fill => this.eraser.setFill(fill);
 
   setBrush(brush) {
     this.currentBrush = brush;
@@ -78,15 +76,7 @@ export class BrushManager {
     this.menuButton.innerHTML = this.currentBrush.getImage(size, Brush.color);
   }
 
-  startDraw(coords) {
-    this.currentBrush.startDraw(coords);
-  }
-
-  draw(coords) {
-    this.currentBrush.draw(coords);
-  }
-
-  stopDraw() {
-    this.currentBrush.stopDraw();
-  }
+  startDraw = coords => this.currentBrush.startDraw(coords);
+  draw = coords => this.currentBrush.draw(coords);
+  stopDraw = () => this.currentBrush.stopDraw();
 }

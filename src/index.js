@@ -20,7 +20,7 @@ const drawingContext = drawingBoard.getContext('2d');
 
 const brush = new BrushManager({
   context: drawingContext,
-  eraserClass: EraserBrush,
+  eraser: EraserBrush,
   colors: [
     'hsl(50, 100%, 99%)',
     'hsl(48, 100%, 50%)',
