@@ -1,5 +1,5 @@
 import { on } from './util';
-import Brush from './brush';
+import {Brush} from './brush';
 import { loadJson, storeJson } from './storage';
 
 function createItem(className, container, onClick) {

@@ -1,7 +1,7 @@
-import Brush from './brush';
+import {Brush} from './brush';
 import { rand } from './util';
 
-class SplatBrush extends Brush {
+export class SplatBrush extends Brush {
   doDraw(oldX, oldY, newX, newY) {
     this.ctx.fillStyle = Brush.color;
     for (let i = 0; i < 16; i++) {
@@ -24,5 +24,3 @@ class SplatBrush extends Brush {
     `
   }
 }
-
-export default SplatBrush;

@@ -1,6 +1,6 @@
-import Brush from './brush.js';
+import {Brush} from './brush.js';
 
-class LineBrush extends Brush {
+export class LineBrush extends Brush {
   doDraw(oldX, oldY, newX, newY) {
     if (oldX === newX && oldY === newY) {
       newX += .1;
@@ -22,5 +22,3 @@ class LineBrush extends Brush {
     `
   }
 }
-
-export default LineBrush;

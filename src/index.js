@@ -3,11 +3,14 @@ import './style.scss';
 import { on, getCoordsfromEvent, getTime } from './util';
 import { createTexture } from './paperTexture';
 import { load, store } from './storage';
-import LineBrush from './linebrush';
-import SplatBrush from './splatbrush';
-import DripBrush from './dripbrush';
-import EraserBrush from './eraserbrush';
+import {LineBrush} from './linebrush';
+import {SplatBrush} from './splatbrush';
+import {DripBrush} from './dripbrush';
+import {EraserBrush} from './eraserbrush';
 import { BrushManager } from './brushmanager';
+import * as OfflinePluginRuntime from 'offline-plugin/runtime';
+
+OfflinePluginRuntime.install();
 
 const drawingBoard = document.querySelector('#drawingboard');
 const menu = document.querySelector('#menu');

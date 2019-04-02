@@ -1,5 +1,6 @@
 const HtmlWebPackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const OfflinePlugin = require('offline-plugin');
 const WebpackPwaManifest = require('webpack-pwa-manifest');
 const path = require('path');
 
@@ -66,6 +67,7 @@ module.exports = {
         },
       ],
     }),
+    new OfflinePlugin(),
   ],
   devtool: 'source-map',
 };

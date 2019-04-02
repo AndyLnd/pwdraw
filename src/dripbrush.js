@@ -1,7 +1,7 @@
 import LineBrush from './linebrush';
 import { rand } from './util';
 
-class DripBrush extends LineBrush {
+export class DripBrush extends LineBrush {
   doDraw(oldX, oldY, newX, newY) {
     super.doDraw(oldX, oldY, newX, newY);
     const dX = oldX - newX;
@@ -43,5 +43,3 @@ class DripBrush extends LineBrush {
     loop();
   }
 }
-
-export default DripBrush;

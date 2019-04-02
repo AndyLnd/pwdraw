@@ -1,4 +1,4 @@
-class Brush {
+export class Brush {
   static size = 20
   static color = '#000'
 
@@ -41,5 +41,3 @@ class Brush {
     return 'brush';
   }
 }
-
-export default Brush;

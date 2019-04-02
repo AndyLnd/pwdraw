@@ -1,6 +1,6 @@
-import Brush from './brush';
+import {Brush} from './brush';
 
-class EraserBrush extends Brush {
+export class EraserBrush extends Brush {
   constructor(context) {
     super(context);
     this.fill = '#fff';
@@ -32,5 +32,3 @@ class EraserBrush extends Brush {
     `;
   }
 }
-
-export default EraserBrush;
