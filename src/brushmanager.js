@@ -16,8 +16,8 @@ export class BrushManager {
     this.eraser = new eraser(context);
     this.menuButton = menuButton;
 
-    this.currentBrush = this.brushes[loadJson('brushNumber') || 0] || this.eraser;
-    this.previousBrush = this.currentBrush === this.eraser ? this.brushes[0] : this.currentBrush;
+    this.currentBrush = this.brushes[loadJson('brushNumber')] || this.brushes[0];
+    this.previousBrush = this.currentBrush;
     Brush.setColor(loadJson('brushColor') || colors[1]);
     Brush.setSize(loadJson('brushSize') || sizes[1]);
 
