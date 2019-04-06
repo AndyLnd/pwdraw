@@ -1,4 +1,4 @@
-import LineBrush from './linebrush';
+import {LineBrush} from './linebrush';
 import { rand } from './util';
 
 export class DripBrush extends LineBrush {
