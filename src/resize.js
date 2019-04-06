@@ -19,8 +19,8 @@ export class ResizeRotator {
   }
   checkRotation = () => {
     console.log('checkRotation');
-    const newRotation = getQuarterTurns()
-    const changeRotation = (newRotation - this.currentRotation + 4) % 4;
+    const newRotation = getQuarterTurns();
+    const changeRotation = (this.currentRotation - newRotation + 4) % 4;
     this.currentRotation = newRotation;
     console.log(changeRotation);
     if (changeRotation) {
