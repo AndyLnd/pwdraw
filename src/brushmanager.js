@@ -1,5 +1,5 @@
 import { on } from './util';
-import {Brush} from './brush';
+import { Brush } from './brush';
 import { loadJson, storeJson } from './storage';
 
 function createItem(className, container, onClick) {
@@ -17,6 +17,7 @@ export class BrushManager {
     this.menuButton = menuButton;
 
     this.currentBrush = this.brushes[loadJson('brushNumber') || 0] || this.eraser;
+    this.previousBrush = this.currentBrush === this.eraser ? this.brushes[0] : this.currentBrush;
     Brush.setColor(loadJson('brushColor') || colors[1]);
     Brush.setSize(loadJson('brushSize') || sizes[1]);
 
@@ -44,6 +45,9 @@ export class BrushManager {
   setBackground = fill => this.eraser.setFill(fill);
 
   setBrush(brush) {
+    if (brush !== this.eraser) {
+      this.previousBrush = brush;
+    }
     this.currentBrush = brush;
     storeJson('brushNumber', this.brushes.indexOf(brush));
     this.updateButton();
@@ -51,12 +55,14 @@ export class BrushManager {
 
   setSize(size) {
     Brush.setSize(size);
+    this.currentBrush = this.previousBrush;
     storeJson('brushSize', size);
     this.updateButton();
   }
 
   setColor(color) {
     Brush.setColor(color);
+    this.currentBrush = this.previousBrush;
     storeJson('brushColor', color);
     this.updateButton();
   }
