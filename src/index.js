@@ -8,6 +8,7 @@ import {SplatBrush} from './splatbrush';
 import {DripBrush} from './dripbrush';
 import {EraserBrush} from './eraserbrush';
 import { BrushManager } from './brushmanager';
+import {ResizeRotator} from './resize';
 import * as OfflinePluginRuntime from 'offline-plugin/runtime';
 
 OfflinePluginRuntime.install();
@@ -22,6 +23,8 @@ const isIos = /iP(hone|ad|od)/.test(navigator.userAgent);
 if (isIos) {
   saveButton.style.display = 'none';
 }
+
+new ResizeRotator(drawingBoard);
 
 const drawingContext = drawingBoard.getContext('2d');
 
